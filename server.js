@@ -38,7 +38,7 @@ const cheerio = require("cheerio");
 const axios = require("axios");
 
 let scrapedData = {}; // define scrapedData outside of performScraping()
-
+let linkObj = {};
 async function performScraping(link) {
   const axiosResponse = await axios.request({
     method: "GET",
@@ -83,10 +83,18 @@ async function performScraping(link) {
   return scrapedData;
 }
 
+async function setLink(link)
+{
+  linkObj ={
+    link: link
+  }
+}
+
 app.post("/", async (req, res) => {
   try {
-    const scrapedData = await performScraping(req.body.link);
-    res.json(scrapedData);
+    // const scrapedData = await performScraping(req.body.link);
+    setLink(req.body.link);
+    res.json(linkObj);
   
   } catch (err) {
     console.error(err);
@@ -95,6 +103,8 @@ app.post("/", async (req, res) => {
 });
 
 app.get("/", async function (req, res) {
+   scrapedData = await performScraping(linkObj.link);
+  
   const response = await responseFunc(scrapedData);
   scrapedData = {... scrapedData, Response:response}
   res.json(scrapedData);
