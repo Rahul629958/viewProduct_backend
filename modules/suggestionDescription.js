@@ -25,7 +25,7 @@ module.exports = async function SuggDescription(scrapedData) {
   for (var i = 0; i < size; i++) {
 
    var str = textArr[i];
-    if(str.length>=15){
+    if(str.length>=45){
     var i_str = 0;
    var isFirstNum=false;
     while (i_str < str.length && isNumber(str[i_str])) {
