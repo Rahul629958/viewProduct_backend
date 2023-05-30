@@ -23,21 +23,20 @@ module.exports = async function SuggDescription(scrapedData) {
   var finalArr = [];
 
   for (var i = 0; i < size; i++) {
-
-   var str = textArr[i];
-    if(str.length>=45){
-    var i_str = 0;
-   var isFirstNum=false;
-    while (i_str < str.length && isNumber(str[i_str])) {
-      i_str++;
-      isFirstNum=true;
+    var str = textArr[i];
+    if (str.length >= 45) {
+      var i_str = 0;
+      var isFirstNum = false;
+      while (i_str < str.length && isNumber(str[i_str])) {
+        i_str++;
+        isFirstNum = true;
+      }
+      if (i_str < str.length && isFirstNum) {
+        str = str.substring(i_str + 2, str.length);
+      }
+      finalArr.push(str);
     }
-    if (i_str < str.length && isFirstNum) {
-      str = str.substring(i_str + 2, str.length);
-    }
-    finalArr.push(str);
   }
-}
 
   return finalArr;
 };

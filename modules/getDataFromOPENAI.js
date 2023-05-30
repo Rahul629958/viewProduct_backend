@@ -22,7 +22,7 @@ module.exports = async function getDataFromOPENAI(prompt) {
 catch
 {
   console.error()
-  return {text:"Error Error Error"};
+  return {text:"***** Error Error"};
 }
   
 }

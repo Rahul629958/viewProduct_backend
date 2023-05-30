@@ -1,10 +1,6 @@
 const getDataFromOPENAI = require("./getDataFromOPENAI");
 
-
-
-
-
-module.exports= async function SuggTitle(scrapedData) {
+module.exports = async function SuggTitle(scrapedData) {
   const title = scrapedData.Title;
   const highlights = scrapedData.Highlights;
 
@@ -17,10 +13,13 @@ module.exports= async function SuggTitle(scrapedData) {
 
   const text = (await getDataFromOPENAI(prompt)).text;
 
-if(text.includes("Error Error Error"))
-{
-  return [{data:"Error",rating:0},{data:"Error",rating:0},{data:"Error",rating:0}]
-}
+  if (text.includes("Error Error Error")) {
+    return [
+      { data: "Error", rating: 0 },
+      { data: "Error", rating: 0 },
+      { data: "Error", rating: 0 },
+    ];
+  }
 
   //splitting the response text into different elements of array
   const textArr = text.split(/[., ,:,\n,(,),/,-]/);
@@ -75,4 +74,4 @@ if(text.includes("Error Error Error"))
 
   // returning final array
   return FinalArr;
-}
+};

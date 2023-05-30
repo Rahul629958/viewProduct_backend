@@ -4,7 +4,9 @@ module.exports = async function suggestionTags(scrapedData) {
   const description = scrapedData.Description;
 
   const prompt =
-    "output 5 suggested tag words(strictly 1 word each(use hyphen in between words only if it is more than one word)) for product with description: '" + description+"'";
+    "output 5 suggested tag words(strictly 1 word each(use hyphen in between words only if it is more than one word)) for product with description: '" +
+    description +
+    "'";
 
   //getting data from openai api
   const text = (await getDataFromOPENAI(prompt)).text;
@@ -19,9 +21,8 @@ module.exports = async function suggestionTags(scrapedData) {
       i++;
     }
     if (i < size) {
-      if(textArr[i][1]=='-')
-      {
-        textArr[i]=textArr[i].substring(2,textArr[i].length);
+      if (textArr[i][1] == "-") {
+        textArr[i] = textArr[i].substring(2, textArr[i].length);
       }
       finalArr.push(textArr[i]);
     }

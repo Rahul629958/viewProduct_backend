@@ -3,16 +3,16 @@ const axios = require("axios");
 
 module.exports = async function performScraping(link) {
   var scrapedData = {
-    link: "",//link of product
-    ImgURL: "",//link of icon (img)
-    Title: "",//title of product
+    link: "", //link of product
+    ImgURL: "", //link of icon (img)
+    Title: "", //title of product
     Highlights: "",
     Description: "",
     Taglist: [],
-    Plan: "",//free or paid plan of product
-    VideoURL: "",//video icon
-    DemoList: [],//demo images/videos
-    CountVid: 0,//number of videos in demo list
+    Plan: "", //free or paid plan of product
+    VideoURL: "", //video icon
+    DemoList: [], //demo images/videos
+    CountVid: 0, //number of videos in demo list
   };
 
   try {
